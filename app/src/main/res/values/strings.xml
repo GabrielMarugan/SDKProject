@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SDKProject</string>
+    <string name="tvItemPostTitle">TextView</string>
+    <string name="tvItemPostBody">TextView</string>
+    <string name="tvItemPostUser">écrit par :</string>
+    <string name="btnLirePlus">Lire plus</string>
+    <string name="tvItemPostTag">TextView</string>
+</resources>
