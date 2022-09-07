@@ -36,7 +36,7 @@
             <TextView
                 android:id="@+id/tvItemPostBody"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:maxLines="2"
                 android:text="@string/tvItemPostBody" />
@@ -52,6 +52,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="auto"
+                    android:onClick="viewProfil"
                     android:text="@string/tvItemPostUser"
                     android:textSize="11sp"
                     android:textStyle="italic" />
@@ -65,7 +68,7 @@
                     android:drawableEnd="@android:drawable/ic_menu_more"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:onClick="onClickHandler"
+                    android:onClick="onClick"
                     android:text="@string/btnLirePlus"
                     android:textAllCaps="false"
                     android:textSize="12sp"

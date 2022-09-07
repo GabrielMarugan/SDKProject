@@ -5,4 +5,8 @@
     <string name="tvItemPostUser">écrit par :</string>
     <string name="btnLirePlus">Lire plus</string>
     <string name="tvItemPostTag">TextView</string>
+    <string name="tvLabelUserFirstName">Prénom :</string>
+    <string name="tvLabelUserLastName">Nom :</string>
+    <string name="tvLabelUserAge">Age :</string>
+    <string name="tvLabelUserEmail">Email :</string>
 </resources>

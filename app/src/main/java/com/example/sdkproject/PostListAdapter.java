@@ -1,8 +1,13 @@
 package com.example.sdkproject;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +26,8 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.postVi
         TextView tvItemPostBody;
         TextView tvItemPostUser;
         TextView tvItemPostTag;
+        Button btnItemPostReadMore;
+        Context context;
 
         public postViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -28,6 +35,47 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.postVi
             tvItemPostBody = itemView.findViewById(R.id.tvItemPostBody);
             tvItemPostUser = itemView.findViewById(R.id.tvItemPostUser);
             tvItemPostTag = itemView.findViewById(R.id.tvItemPostTag);
+            btnItemPostReadMore = itemView.findViewById(R.id.btnLirePlus);
+            context = itemView.getContext();
+
+
+
+            btnItemPostReadMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TextView tvItemPostBody = itemView.findViewById(R.id.tvItemPostBody);
+                    ViewGroup.LayoutParams params = tvItemPostBody.getLayoutParams();
+                    //Log.d("testBtn",btnItemPostReadMore..getText().toString());
+                    //ne marche pas, "Lire plus" est différent de "Lire plus"
+                    //if (btnItemPostReadMore.getText().toString() == "Lire plus"){
+                    if (tvItemPostBody.getMaxLines() == 2) {
+                        tvItemPostBody.setMaxLines(100);
+                        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                        tvItemPostBody.requestLayout();
+                        btnItemPostReadMore.setText("Lire moins");
+                        btnItemPostReadMore.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.ic_menu_revert, 0);
+                    } else {
+                        tvItemPostBody.setMaxLines(2);
+                        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                        tvItemPostBody.requestLayout();
+                        btnItemPostReadMore.setText("Lire plus");
+                        btnItemPostReadMore.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.ic_menu_more, 0);
+                    }
+                    Log.d("testBtn", "coucou");
+                }
+
+            });
+
+                tvItemPostUser.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick (View view){
+                    Intent intent = new Intent(context, ViewProfilActivity.class);
+                    intent.putExtra("idUser", tvItemPostUser.getText());
+                    context.startActivity(intent);
+                }
+                });
+
+
         }
     }
 
@@ -63,6 +111,8 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.postVi
     public int getItemCount() {
         return postList.size();
     }
+
+
 
 
 
